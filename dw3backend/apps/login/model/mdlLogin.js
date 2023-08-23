@@ -10,6 +10,7 @@ const GetCredencial = async (loginPar) => {
   ).rows;
 };
 
+
 module.exports = {
   GetCredencial,
 };
