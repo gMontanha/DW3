@@ -1,5 +1,16 @@
-### teste de buscar todos os alunos
-GET http://localhost:40000/GetAllPedidos HTTP/1.1
+### teste de buscar Pedido por ID
+POST http://localhost:40000/Login HTTP/1.1
+content-type: application/json
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
+
+{    
+    "username": "qwe",
+    "password": "qwe"
+}
+
+
+### teste de buscar todos os Pedidos
+GET http://localhost:40000/getAllPedidos HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
 
@@ -7,46 +18,48 @@ content-type: application/json
     
 }
 
-### teste de buscar aluno por ID
-POST http://localhost:40000/GetPedidoByID HTTP/1.1
+### teste de buscar Pedido por ID
+POST http://localhost:40000/getPedidoByID HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQxMTU5NCwiZXhwIjoxNjkxNDExODk0fQ.1Ig9H4D6QMW0TSkwJIyv7YZjBO35u5WkOpqhoSBRA1U
 
 {    
-    "Pedidoid": 4
+    "Pedidoid": 18
 }
 
-### teste de inserção de aluno
-POST http://localhost:40000/InsertPedidos HTTP/1.1
+### teste de inserção de Pedido
+POST http://localhost:40000/insertPedidos HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQzNTg3MSwiZXhwIjoxNjkxNDM2NDcxfQ.hAh0VyRfEXvYmhunlJALD-qda8pYr2zzAHobn1yua20
 
 {    
     "Pedidoid": 0,
-    "codigo": "Nutrição",
-    "descricao": "Bacharelado em Nutrição",
-    "ativo": true,
-    "deleted": false    
+    "numero": "0222109",
+    "data": "21/09/2022",
+    "valortotal": "870",
+    "clienteid": 2,
+    "deleted": false
 }
 
-### teste de atualização de aluno
-POST http://localhost:40000/UpdatePedidos HTTP/1.1
+### teste de atualização de Pedido
+POST http://localhost:40000/updatePedidos HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQzNTg3MSwiZXhwIjoxNjkxNDM2NDcxfQ.hAh0VyRfEXvYmhunlJALD-qda8pYr2zzAHobn1yua20
 
 {    
-    "Pedidoid": 9,
-    "codigo": "xfisio",
-    "descricao": "xBacharelado em Fisioterapia",
-    "ativo": true,
-    "deleted": false 
+    "Pedidoid": 52,
+    "numero": "0041703",
+    "data": "17/03/2004",
+    "valortotal": "325",
+    "clienteid": 2,
+    "deleted": false
 }
 
-### teste de atualização de aluno
+### teste de atualização de Pedido
 POST http://localhost:40000/DeletePedidos HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQ5MDg3NCwiZXhwIjoxNjkxNDkxNDc0fQ.1ABhMgWYm8gGKy7q90GOPQpNoY5M1LLzpCltKxFjcEo
 
 {    
-    "Pedidoid": 9   
+    "Pedidoid": 55  
 }

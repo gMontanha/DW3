@@ -1,16 +1,5 @@
-### teste de buscar Cliente por ID
-POST http://localhost:40000/Login HTTP/1.1
-content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
-
-{    
-    "username": "qwe",
-    "password": "qwe"
-}
-
-
-### teste de buscar todos os Clientes
-GET http://localhost:40000/getAllClientes HTTP/1.1
+### teste de buscar todos os alunos
+GET http://localhost:40000/GetAllClientes HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
 
@@ -18,52 +7,48 @@ content-type: application/json
     
 }
 
-### teste de buscar Cliente por ID
-POST http://localhost:40000/getClienteByID HTTP/1.1
+### teste de buscar aluno por ID
+POST http://localhost:40000/GetClienteByID HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQxMTU5NCwiZXhwIjoxNjkxNDExODk0fQ.1Ig9H4D6QMW0TSkwJIyv7YZjBO35u5WkOpqhoSBRA1U
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
 
 {    
-    "Clienteid": 18
+    "clienteid": 4
 }
 
-### teste de inserção de Cliente
-POST http://localhost:40000/insertClientes HTTP/1.1
+### teste de inserção de aluno
+POST http://localhost:40000/InsertClientes HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQzNTg3MSwiZXhwIjoxNjkxNDM2NDcxfQ.hAh0VyRfEXvYmhunlJALD-qda8pYr2zzAHobn1yua20
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "Clienteid": 0,
-    "prontuario": "pront5",
-    "nome": "Carlos das Matias",
-    "endereco": " Rua das couves",
-    "rendafamiliar": 10000,
-    "datanascimento": "1999-12-12",
-    "cursoid": 2,
-    "deleted": false
+    "clienteid": 0,
+    "codigo": "Nutrição",
+    "nome": "xBacharelado em Sistemas",
+    "endereco": "Rua Sergipe 1751",
+    "ativo": true,
+    "deleted": false    
 }
 
-### teste de atualização de Cliente
-POST http://localhost:40000/updateClientes HTTP/1.1
+### teste de atualização de aluno
+POST http://localhost:40000/UpdateClientes HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQzNTg3MSwiZXhwIjoxNjkxNDM2NDcxfQ.hAh0VyRfEXvYmhunlJALD-qda8pYr2zzAHobn1yua20
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "Clienteid": 52,
-    "prontuario": "pront109",
-    "nome": "xJosé das Neves",
-    "endereco": "x Rua das couves",
-    "rendafamiliar": 0,
-    "datanascimento": "1999-12-12",
-    "cursoid": 2,
-    "deleted": false
+    "clienteid": 9,
+    "codigo": "xfisio",
+    "nome": "xBacharelado em Fisioterapia",
+    "endereco": "Rua Rio de Janeiro 3751",
+    "ativo": true,
+    "deleted": false 
 }
 
-### teste de atualização de Cliente
+### teste de atualização de aluno
 POST http://localhost:40000/DeleteClientes HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQ5MDg3NCwiZXhwIjoxNjkxNDkxNDc0fQ.1ABhMgWYm8gGKy7q90GOPQpNoY5M1LLzpCltKxFjcEo
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "Clienteid": 55  
+    "clienteid": 9   
 }

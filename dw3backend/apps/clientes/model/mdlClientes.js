@@ -1,75 +1,37 @@
 const db = require("../../../database/databaseconfig");
 
-const getAllClientes = async () => {
+const GetAllClientes = async () => {
   return (
     await db.query(
-      "SELECT *, (SELECT descricao from CURSOS where cursoid = Clientes.cursoid)" +
-        "FROM Clientes where deleted = false ORDER BY nome ASC"
+      "SELECT * " + "FROM clientes where deleted = false ORDER BY nome ASC"
     )
   ).rows;
 };
 
-const getClienteByID = async (ClienteIDPar) => {
+const GetClienteByID = async (ClienteIDPar) => {
   return (
     await db.query(
-      "SELECT *, (SELECT descricao from CURSOS where cursoid = Clientes.cursoid)" +
-        "FROM Clientes WHERE Clienteid = $1 and deleted = false ORDER BY nome ASC",
+      "SELECT * " +
+        "FROM clientes WHERE clienteid = $1 and deleted = false ORDER BY nome ASC",
       [ClienteIDPar]
     )
   ).rows;
 };
 
-const insertClientes = async (ClienteREGPar) => {
+const InsertClientes = async (registroPar) => {
   //@ Atenção: aqui já começamos a utilizar a variável msg para retornor erros de banco de dados.
   let linhasAfetadas;
   let msg = "ok";
   try {
     linhasAfetadas = (
       await db.query(
-        "INSERT INTO Clientes " + "values(default, $1, $2, $3, $4, $5, $6, $7)",
+        "INSERT INTO clientes " + "values(default, $1, $2, $3, $4, $5)",
         [
-          ClienteREGPar.prontuario,
-          ClienteREGPar.nome,
-          ClienteREGPar.endereco,
-          ClienteREGPar.rendafamiliar,
-          ClienteREGPar.datanascimento,
-          ClienteREGPar.cursoid,
-          ClienteREGPar.deleted,
-        ]
-      )
-    ).rowCount;
-    Cliente} catch (error) {
-    msg = "[mdlClientes|insertClientes] " + error.detail;
-    linhasAfetadas = -1;
-  }
-
-  return { msg, linhasAfetadas };
-};
-
-const UpdateClientes = async (ClienteREGPar) => {
-  let linhasAfetadas;
-  let msg = "ok";
-  try {
-    linhasAfetadas = (
-      await db.query(
-        "UPDATE Clientes SET " +
-          "prontuario = $2, " +
-          "nome = $3, " +
-          "endereco = $4, " +
-          "rendafamiliar = $5, " +
-          "datanascimento = $6, " +
-          "cursoid = $7, " +
-          "deleted = $8 " +
-          "WHERE Clienteid = $1",
-        [
-          ClienteREGPar.Clienteid,
-          ClienteREGPar.prontuario,
-          ClienteREGPar.nome,
-          ClienteREGPar.endereco,
-          ClienteREGPar.rendafamiliar,
-          ClienteREGPar.datanascimento,
-          ClienteREGPar.cursoid,
-          ClienteREGPar.deleted,
+          registroPar.codigo,
+          registroPar.nome,
+          registroPar.endereco,
+          registroPar.ativo,
+          registroPar.deleted,
         ]
       )
     ).rowCount;
@@ -81,29 +43,61 @@ const UpdateClientes = async (ClienteREGPar) => {
   return { msg, linhasAfetadas };
 };
 
-const DeleteClientes = async (ClienteREGPar) => {
+const UpdateClientes = async (registroPar) => {
+  let linhasAfetadas;
+  let msg = "ok";
+  try {
+    linhasAfetadas = (
+      await db.query(
+        "UPDATE clientes SET " +
+          "codigo = $2, " +
+          "nome = $3, " +
+          "endereco = $4, " +
+          "ativo = $5, " +
+          "deleted = $6 " +          
+          "WHERE clienteid = $1",
+        [
+            registroPar.clienteid  ,
+            registroPar.codigo   ,
+            registroPar.nome,
+            registroPar.ativo    ,
+            registroPar.deleted  ,          
+        ]
+      )
+    ).rowCount;
+  } catch (error) {
+    msg = "[mdlClientes|UpdateClientes] " + error.detail;
+    linhasAfetadas = -1;
+  }
+
+  return { msg, linhasAfetadas };
+};
+
+
+const DeleteClientes = async (registroPar) => {
   let linhasAfetadas;
   let msg = "ok";
     
   try {
     linhasAfetadas = (
     await db.query(
-      "UPDATE Clientes SET " + "deleted = true " + "WHERE Clienteid = $1",
-      [ClienteREGPar.Clienteid]
+      "UPDATE clientes SET " + "deleted = true " + "WHERE clienteid = $1",
+      [registroPar.Clienteid]
     )
   ).rowCount;
 } catch (error) {
-  msg = "[mdlClientes|insertClientes] " + error.detail;
+  msg = "[mdlClientes|DeleteClientes] " + error.detail;
   linhasAfetadas = -1;
 }
 
 return { msg, linhasAfetadas };
 };
 
+
 module.exports = {
-  getAllClientes,
-  getClienteByID,
-  insertClientes,
+  GetAllClientes,
+  GetClienteByID,
+  InsertClientes,
   UpdateClientes,
   DeleteClientes,
 };
